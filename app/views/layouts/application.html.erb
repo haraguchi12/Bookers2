@@ -11,15 +11,19 @@
 
   <body>
     <% if user_signed_in? %>
+     <li>
+        <%= link_to 'Books', new_book_path %>
+      </li>
+    
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "sign up", new_user_registration_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "login ", new_user_session_path %>
       </li>
     <% end %>
     <%= yield %>
