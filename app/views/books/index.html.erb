@@ -1,0 +1,11 @@
+<h1>Books</h1>
+<% @books.each do |post_image| %>
+<div>
+  <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <%= link_to book_path(book.id) do %>
+  <% end %>
+  <p>Title：<%= book.title %></p>
+  <p>Opinion：<%= book.body %></p>
+
+</div>
+<% end %>
