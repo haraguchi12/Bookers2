@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  
   def show
+    @book = Book.new
     @user = User.find(params[:id])
-    @books = @user.book.page(params[:page]).reverse_order
+    @books = @user.books
   end
   
   def edit
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
    private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 end
 

@@ -1,8 +1,8 @@
 <h1>Book detail</h1>
 <div>
   
-  <p>Title：<%=@book.title %></p>
-  <p>Opinion：<%=book.body %></p>
+  <p>Title：<%= @book.title %></p>
+  <p>Opinion：<%= @book.body %></p>
   <% if @book.user == current_user %>
     <%= link_to "destroy", book_path(@book), method: :delete %>
   <% end %>
