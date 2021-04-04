@@ -1,0 +1,13 @@
+<div>
+  <p id="notice"></p>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Editing Book</h1>
+      <%= render 'create_book_form', book: @book %>
+      <div class="link">
+        <%=link_to "Show",book_path(@book.id)　%>&ensp;|&ensp;<%=link_to "Back",books_path　%>
+      </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
