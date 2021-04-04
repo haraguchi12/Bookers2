@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
-    @user = User.find_by(id: current_user.id)
+    
   end
   
   def update
-    @user = User.find_by(id: current_user.id)
+    
     @user = User.find(params[:id])
    if @user.update(user_params)
      flash[:notice] = "successfully" 

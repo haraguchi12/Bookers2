@@ -2,34 +2,45 @@
 <html>
   <head>
     <title>Bookers2</title>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    #ログイン前、ログイン後の振り分け
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <nav class="nav navbar-brand navbar-left">
+          <span class="bookers">Bookers</span>
+        </nav>
+    <!--ログイン前、ログイン後の振り分け-->
     <nav>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-    <li>
+    <li class="fas fa-home nav-link text-light">
       <%= link_to 'Home', user_path(current_user.id) %>
       </li>
       
-     <li>
+      <li class="fas fa-users nav-link text-light">
+       <%= link_to 'Users', users_path %>
+      </li>
+      
+     <li class="fas fa-book-open nav-link text-light">
         <%= link_to 'Books', books_path %>
       </li>
       
-      <li>
+      <li class="fas fa-sign-out-alt nav-link text-light">
         <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
       
       <% else %>
       
       <li>
-      <%= link_to 'Home', user_path(current_user.id) %>
+      <%= link_to 'Home', root_path(current_user) %>
       </li>
       
       <li>
@@ -44,7 +55,9 @@
       </li>
     <% end %>
     </ul>
-  </nav>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
