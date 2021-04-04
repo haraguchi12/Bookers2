@@ -1,13 +1,32 @@
-<h1>Books</h1>
-<% @books.each do |book| %>
-<div>
-  
-  <%= link_to book_path(book.id) do %>
-  <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-  <p>Title：<%= book.title %></p>
-  <% end %>
-  
-  <p>Opinion：<%= book.body %></p>
+<div class="container main-container">
+  <p id="notice"></p>
+  <div class="row">
+    <!-- 左上-->
+    <div class="col-xs-3">
+      <h2>User info</h2>
+      <%= render 'users/info', user: @user %>
 
-</div>
-<% end %>
+      <!-- 左下-->
+      <h2>New book</h2>
+       <%= form_with model: @book, local:true do |f| %>
+       <div class="field row ">
+  　  <br> <%= f.label :title %></br>
+      <%= f.text_field :title, autofocus: true, class:"col-xs-12 book_title",id:"book_title" %>
+      </div>
+      
+      <div class="field row">
+      <br><%= f.label :body,"Opinion" %></br>
+      <%= f.text_area :body, autofocus: true,class:"col-xs-12 book_body",id:"book_body" %>
+      </div>
+      <div class="actions row">
+      <%= f.submit "Create Book",class:"btn btn-primary col-xs-12"%>
+    </div>
+<% end %>      
+    </div>
+
+    <!--右-->
+    <div class="col-xs-9">
+      <%= render 'books', books: @books %>
+    </div>
+  </div>
+　</div>
