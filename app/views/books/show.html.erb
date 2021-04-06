@@ -46,7 +46,7 @@
                 <%=link_to @user.name, user_path(@user.id),class: "text-muted user-name" %>
               </div> 
             </td>
-            <td> <%= link_to @book.title  book_path(@book.id),class:"books-show" do %><% end %></td>
+            <td> <%= link_to @book.title, book_path(@book.id),class: "books-show" %></td>
             <td><%= @book.body %></td>
             <% if @book.user == current_user %>
               <td>
