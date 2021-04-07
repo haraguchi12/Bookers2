@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
-  
-  
+
+
   def new
     @book = Book.new
   end
@@ -15,11 +15,11 @@ class BooksController < ApplicationController
     else
       @user = User.find_by(id: current_user.id)
       @books = Book.all
-      flash.now[:notice] = "error"
+      flash.now[:notice] = "can't be blank error"
       render :index
     end
   end
-  
+
 
   def index
     @books = Book.all
@@ -32,11 +32,11 @@ class BooksController < ApplicationController
     @user = User.find_by(id: current_user.id)
     @book = Book.find(params[:id])
   end
-  
+
   def edit
     @book = Book.find(params[:id])
   end
-  
+
   def update
     @book = Book.find(params[:id])
     @book.user_id = current_user.id
@@ -45,6 +45,7 @@ class BooksController < ApplicationController
        redirect_to book_path(@book.id)
     else
       @books = Book.all
+      flash.now[:notice] = "error"
        render :edit
     end
   end
@@ -54,13 +55,13 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
-  
+
   private
 
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
   def ensure_correct_user
     @book = Book.find(params[:id])
     if current_user.id != @book.user_id

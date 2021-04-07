@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    @book = Book.find(params[:id])
+    # @book = Book.find(params[:id])
     @user = User.find(params[:id])
    if @user.update(user_params)
      flash[:notice] = "successfully" 
