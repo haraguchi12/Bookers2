@@ -15,9 +15,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
-    @book = Book.find(params[:id])
-    
+    @user = User.find_by(id: current_user.id)
   end
   
   def update
@@ -39,9 +37,8 @@ class UsersController < ApplicationController
   end
   
   def ensure_correct_user
-    @book = Book.find(params[:id])
-    if current_user.id != @book.user_id
-      redirect_to books_path
+    if current_user.id != params[:id].to_i
+      redirect_to user_path(current_user.id)
     end
   end
   
