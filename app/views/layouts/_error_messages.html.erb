@@ -1,9 +1,15 @@
-<% if model.errors.any? %>
-  <div class="alert alert-warning">
-    <ul>
-      <% model.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+  <% if model.errors.any? %>
+    <div class="error_explanation">
+      <h2 class="error-prohibited">
+        <%= pluralize(model.errors.count, "error") %> prohibited this obj from being saved:
+      </h2>
+      <div class="alert">
+        <ul>
+          <% model.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
