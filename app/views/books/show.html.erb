@@ -9,6 +9,7 @@
       <!-- 左下-->
       <h2 class="mt-3">New book</h2>
        <%= form_with url: books_path, model: @book_new, local:true do |f| %>
+       <%= render 'layouts/error_messages', model: f.object %>
        <div class="form-group">
      <br> <%= f.label :title %></br>
       <%= f.text_field :title, autofocus: true, class:"col-xs-12 book_title",id:"book_title" %>
