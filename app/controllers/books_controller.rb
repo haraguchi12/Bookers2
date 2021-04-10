@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     else
       @user = User.find_by(id: current_user.id)
       @books = Book.all
-      flash.now[:notice] = "can't be blank error"
+      flash.now[:notice] = ""
       render :index
     end
   end
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
        redirect_to book_path(@book.id)
     else
       @books = Book.all
-      flash.now[:notice] = "error"
+      flash.now[:notice] = ""
        render :edit
     end
   end
