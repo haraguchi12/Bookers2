@@ -25,7 +25,7 @@ class UsersController < ApplicationController
      flash[:notice] = "successfully" 
     redirect_to user_path(@user.id)
    else
-     flash.now[:notice] = "error"
+     flash.now[:notice] = ""
     render :edit
    end
   end
