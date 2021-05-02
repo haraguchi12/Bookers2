@@ -49,6 +49,8 @@
             </td>
             <td> <%= link_to @book.title, book_path(@book.id),class: "books-show" %></td>
             <td><%= @book.body %></td>
+            <td class="favorite-btn"><%= render "favorites/favorite-btn", book: @book %></td>
+            <td>コメント数: <%= @book.book_comments.count %></td>
             <% if @book.user == current_user %>
               <td>
                 <%= link_to "Edit",edit_book_path(@book.id),class:"btn-sm btn-success" %>
