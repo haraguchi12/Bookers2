@@ -20,6 +20,7 @@
           <%= link_to book_path(book.id),class:"books_show" do %><%= book.title %><% end %>
         </td>
         <td><%= book.body %></td>
+        <td>コメント数: <%= book.book_comments.count %></td>
       </tr>
     <% end %>
   </tbody>
