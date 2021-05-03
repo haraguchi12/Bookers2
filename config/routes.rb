@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
  end
  resources :users, only: [:show, :edit, :update, :index]
+
+ get 'followings' => 'relationships#followings', as: 'followings'
+ get 'followers' => 'relationships#followers', as: 'followers'
 end
