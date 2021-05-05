@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  def search
+	
     before_action :authenticate_user!
 
 	def search
@@ -12,5 +12,5 @@ class SearchController < ApplicationController
 			@records = Book.search_for(@content, @method)
 		end
 	end
-  end
 end
+
