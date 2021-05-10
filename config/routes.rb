@@ -9,11 +9,13 @@ Rails.application.routes.draw do
  root to: 'homes#top'
  get  "/home/about" =>"homes#about"
  get '/search', to: 'search#search'
- get 'chat/:id' => 'chats#show', as: 'chat'
+ get 'chat/:id', to: 'chats#show', as: 'chat'
+ resources :chats, only: [:create]
+
  resources :books, only: [:new, :create, :index, :show, :destroy, :edit,:update] do
    resource :favorites, only: [:create, :destroy]
    resources :book_comments, only: [:create, :destroy]
-   resources :chats, only: [:create]
+
 
  end
  resources :users, only: [:show, :edit, :update, :index] do

@@ -20,7 +20,7 @@ class ChatsController < ApplicationController
     end
     #if文の中で定義した@roomに紐づくchatsテーブルのレコードを代入
     @chats = @room.chats
-    #@room.idを代入したChat.newを用意しておく(message送信時のform用)←筆者の表現が合っているか分かりません、、
+    #@room.idを代入したChat.newを用意しておく
     @chat = Chat.new(room_id: @room.id)
   end
 
