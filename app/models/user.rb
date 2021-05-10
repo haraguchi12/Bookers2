@@ -52,11 +52,13 @@ class User < ApplicationRecord
 jp_prefecture :prefecture_code
 
 def prefecture_name
-  JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)  #都道府県コードから都道府県名に自動で変換する。
 end
 
 def prefecture_name=(prefecture_name)
   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  #~.prefecture_nameで都道府県名を参照出来る様にする。
+  #例) @user.prefecture_nameで該当ユーザーの住所(都道府県)を表示出来る。
 end
 
 end
