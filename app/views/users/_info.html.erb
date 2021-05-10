@@ -32,8 +32,7 @@
      <% end %>
      <% else %>
      <%= link_to 'チャットする', chat_path(user.id) %>
-     <% end %>
-     <% else %>
+     
      <%= link_to '',edit_user_path(user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog" %>
      <% end %>
   </div>
